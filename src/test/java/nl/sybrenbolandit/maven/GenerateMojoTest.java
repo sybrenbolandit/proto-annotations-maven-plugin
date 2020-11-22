@@ -5,6 +5,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import java.io.File;
+import java.nio.file.Files;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -34,7 +35,9 @@ public class GenerateMojoTest {
 
         generateMojo.execute();
 
-        var outputFile = generateMojo.getOutputDirectory();
+        File outputFile = generateMojo.getOutputDirectory().toPath().resolve("test.proto").toFile();
         assertTrue(outputFile.exists());
+        String protoContent = Files.readString(outputFile.toPath());
+        assertTrue(protoContent.contains("get: \"/cats\""));
     }
 }
