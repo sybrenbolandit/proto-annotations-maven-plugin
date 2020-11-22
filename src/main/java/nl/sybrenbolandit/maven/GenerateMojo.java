@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 import static java.nio.file.StandardOpenOption.CREATE;
 import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
 
-@Mojo(name = "generate", defaultPhase = LifecyclePhase.GENERATE_SOURCES)
+@Mojo(name = "generate", defaultPhase = LifecyclePhase.GENERATE_RESOURCES)
 public class GenerateMojo extends AbstractMojo {
 
     @Parameter(property = "inputFile", defaultValue = "${basedir}/src/main/proto/spec.proto")
